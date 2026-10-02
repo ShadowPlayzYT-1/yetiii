@@ -1,0 +1,6 @@
+</main><footer><div class="wrap foot"><div><div class="logo"><img src="/logo.gif" alt="" onerror="this.remove()"><span><b><%= site %>™</b><small>Germany · India</small></span></div>
+<p class="muted">Fast, reliable hosting on AMD EPYC &amp; Ryzen. NVMe storage, 10 Gbps network and professional support.</p><a class="btn sm" href="<%= discord %>" target="_blank" rel="noopener">Join our Discord</a></div>
+<div><h6>PRODUCTS</h6><% cats.forEach(c=>{ %><a href="/c/<%= c.slug %>"><%= c.name %></a><% }) %></div>
+<div><h6>COMPANY</h6><a href="/about">About Us</a><a href="/contact">Contact</a><a href="/faq">FAQ</a></div>
+<div><h6>LEGAL</h6><a href="/terms">Terms</a><a href="/privacy">Privacy Policy</a><a href="/refund">Refund Policy</a></div></div>
+<p class="copy">© <%= new Date().getFullYear() %> <%= site %>™ <% if(admin){ %>• <a href="/admin">Admin</a><% } %></p></footer></body></html>

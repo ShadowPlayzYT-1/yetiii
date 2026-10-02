@@ -1,0 +1,5 @@
+<%- include('partials/head') %>
+<h1><%= cat.name %></h1><p class="muted"><%= cat.desc %></p>
+<% if(cat.status=='soon'&&!items.length){ %><div class="notice">Coming soon. Join our Discord to get notified.</div><% } %>
+<% groups.forEach(g=>{ %><h2><%= g %></h2><div class="grid"><% items.filter(p=>p.group==g).forEach(p=>{ %><%- include('partials/card',{p}) %><% }) %></div><% }) %>
+<%- include('partials/foot') %>

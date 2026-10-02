@@ -1,0 +1,11 @@
+<%- include('../partials/head') %><h1><%= isNew?'New product':'Edit '+p.name %></h1>
+<form class="form" method="post" action="/admin/product/save<%= isNew?'':'/'+p.id %>">
+<label>Name<input name="name" value="<%= p.name||'' %>" required></label>
+<label>Category<select name="category"><% cats.forEach(c=>{ %><option value="<%= c.slug %>" <%= p.category==c.slug?'selected':'' %>><%= c.name %></option><% }) %></select></label>
+<label>Group (e.g. Power, Budget, Ryzen 7)<input name="group" value="<%= p.group||'' %>"></label>
+<label>Monthly price (₹)<input name="price_month" type="number" value="<%= p.price_month||'' %>"></label>
+<label>Yearly price (₹)<input name="price_year" type="number" value="<%= p.price_year||'' %>"></label>
+<label>Specs (one per line, Label: value)<textarea name="specs" rows="10"><%= Object.entries(p.specs||{}).map(([k,v])=>k+': '+v).join('\n') %></textarea></label>
+<label class="chk"><input type="checkbox" name="stock" <%= p.stock?'checked':'' %>> In stock</label>
+<label class="chk"><input type="checkbox" name="featured" <%= p.featured?'checked':'' %>> Show on homepage</label>
+<button class="btn">Save</button> <a class="btn ghost" href="/admin">Cancel</a></form><%- include('../partials/foot') %>

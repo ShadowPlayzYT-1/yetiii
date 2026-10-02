@@ -1,0 +1,2 @@
+<%- include('../partials/head') %><form class="doc form" method="post" action="/admin/login"><h1>Admin</h1><% if(err){ %><div class="notice">Invalid login.</div><% } %>
+<input name="user" placeholder="Username" required><input name="pass" type="password" placeholder="Password" required><button class="btn">Login</button></form><%- include('../partials/foot') %>

@@ -1,0 +1,13 @@
+<%- include('partials/head') %>
+<section class="hero"><span class="pill">❄ <%= site %> Hosting</span>
+<h1><span class="g">Host Without Limits.</span><br>Scale Without Compromise.</h1>
+<p>Enterprise-grade infrastructure, ultra-low latency and uncompromising performance for communities that demand the best.</p>
+<div class="chips"><span>✔ AMD EPYC</span><span>✔ NVMe Storage</span><span>✔ 10 Gbps Network</span><span>✔ DDoS Protected</span><span>✔ 24/7 Support</span></div>
+<div class="cta"><a class="btn glow" href="/c/minecraft">Get Started →</a><a class="btn disc" href="<%= discord %>" target="_blank" rel="noopener">Discord</a></div></section>
+<div class="mq"><div><span>MINECRAFT</span><span>VPS</span><span>BOT HOSTING</span><span>DOMAINS</span><span>DEVELOPMENT</span><span>AMD EPYC</span><span>NVME</span><span>10 GBPS</span><span>MINECRAFT</span><span>VPS</span><span>BOT HOSTING</span><span>DOMAINS</span><span>DEVELOPMENT</span><span>AMD EPYC</span><span>NVME</span><span>10 GBPS</span></div></div>
+<section class="stats"><div><b data-n="10">0</b><small>Gbps network</small></div><div><b data-n="9">0</b><small>Minecraft tiers</small></div><div><b data-n="7">0</b><small>VPS plans</small></div><div><b data-n="24">0</b><small>/7 support</small></div></section>
+<h2 class="rv">Our Services</h2><div class="grid">
+<% cats.forEach(c=>{ %><a class="card rv" href="/c/<%= c.slug %>"><h3><%= c.name %> <span class="arr">→</span></h3><p><%= c.desc %></p><% if(c.status=='soon'){ %><span class="tag">Coming soon</span><% } %></a><% }) %></div>
+<% if(featured.length){ %><h2 class="rv">Popular</h2><div class="grid"><% featured.forEach(p=>{ %><%- include('partials/card',{p}) %><% }) %></div><% } %>
+<section class="banner rv"><h2>Ready to launch?</h2><p>Open a ticket on Discord and get set up fast.</p><a class="btn glow" href="<%= discord %>" target="_blank" rel="noopener">Open a ticket</a></section>
+<%- include('partials/foot') %>

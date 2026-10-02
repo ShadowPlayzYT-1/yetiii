@@ -1,0 +1,3 @@
+<a class="card" href="/p/<%= p.slug %>"><small><%= p.group %></small><h3><%= p.name %></h3>
+<ul><% Object.entries(p.specs).slice(0,4).forEach(([k,v])=>{ %><li><span><%= k %></span><b><%= v %></b></li><% }) %></ul>
+<div class="price"><% if(!p.stock){ %><span class="oos">Out of stock</span><% } else if(p.price_month){ %><%= inr(p.price_month) %><small>/mo</small><% } else { %>Custom quote<% } %></div></a>

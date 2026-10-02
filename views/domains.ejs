@@ -1,0 +1,7 @@
+<%- include('partials/head') %>
+<h1>Domains</h1><p class="muted">Search a name to check availability. Prices are live from our registrar.</p>
+<form class="search" action="/domains/search"><input name="q" value="<%= q %>" placeholder="yourname" required><button class="btn">Search</button></form>
+<% if(result===null){ %><div class="notice">Could not check availability right now. Please try again.</div><% } else if(result&&result.length){ %>
+<h2>Results</h2><table class="list"><% result.forEach(r=>{ %><tr><td><%= r.domain %></td><td><%= r.ok?'Available':'Taken' %></td><td><%= r.price?inr(r.price)+'/yr':'' %></td><td><% if(r.ok){ %><a class="btn sm" href="<%= discord %>" target="_blank" rel="noopener">Buy</a><% } %></td></tr><% }) %></table><% } %>
+<h2>All extensions</h2><table class="list"><% rows.forEach(r=>{ %><tr><td><%= r.tld %> <% if(r.popular){ %><span class="tag">Popular</span><% } %></td><td><%= inr(r.price) %>/yr</td></tr><% }) %></table>
+<%- include('partials/foot') %>

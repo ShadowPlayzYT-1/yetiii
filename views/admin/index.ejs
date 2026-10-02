@@ -1,0 +1,10 @@
+<%- include('../partials/head') %><h1>Admin panel</h1>
+<form method="post" action="/admin/logout"><button class="btn ghost sm">Logout</button></form>
+<h2>Categories</h2><table class="list"><% cats.forEach(c=>{ %><tr><td><%= c.name %></td><td><%= c.status %></td><td class="act">
+<form method="post" action="/admin/cat"><input type="hidden" name="slug" value="<%= c.slug %>"><button name="action" value="toggle" class="btn sm ghost">Toggle active/soon</button>
+<button name="action" value="delete" class="btn sm danger" onclick="return confirm('Delete category?')">Delete</button></form></td></tr><% }) %></table>
+<form method="post" action="/admin/cat" class="row"><input name="name" placeholder="New category name" required><input name="desc" placeholder="Description"><button name="action" value="add" class="btn sm">Add</button></form>
+<h2>Products (<%= products.length %>) <a class="btn sm" href="/admin/product/new">+ New</a></h2>
+<table class="list"><% products.forEach(p=>{ %><tr><td><%= p.name %> <small class="muted"><%= p.category %> / <%= p.group %></small></td><td><%= p.price_month?inr(p.price_month):'—' %></td><td><%= p.stock?'In stock':'Out' %></td><td class="act">
+<a class="btn sm ghost" href="/admin/product/<%= p.id %>">Edit</a><form method="post" action="/admin/product/delete/<%= p.id %>"><button class="btn sm danger" onclick="return confirm('Delete?')">Delete</button></form></td></tr><% }) %></table>
+<%- include('../partials/foot') %>

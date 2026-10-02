@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title><%= title?title+' • ':'' %><%= site %></title><link rel="icon" href="/logo.gif"><link rel="stylesheet" href="/style.css"><script defer src="/app.js"></script></head><body>
+<div class="bg"><i></i><i></i><i></i></div>
+<header><div class="wrap nav"><a class="logo" href="/"><img src="/logo.gif" alt="" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'❄',className:'lg'}))"><span><b><%= site %>™</b><small>PREMIUM HOSTING</small></span></a>
+<button class="burger" aria-label="Menu" onclick="document.body.classList.toggle('open')">☰</button>
+<nav>
+<div class="dd"><a href="#">Game Hosting ▾</a><div class="mega"><h6>GAME HOSTING</h6>
+<a href="/c/minecraft"><b>Minecraft Power</b><span>AMD EPYC, Germany → India</span></a><a href="/c/minecraft"><b>Minecraft Budget</b><span>Affordable servers from ₹20/mo</span></a></div></div>
+<div class="dd"><a href="#">Hosting Services ▾</a><div class="mega two"><h6>HOSTING SERVICES</h6>
+<a href="/c/vps"><b>VPS Hosting</b><span>Ryzen 7 &amp; 9, full root access</span></a><a href="/c/bot-hosting"><b>Bot Hosting</b><span>Discord, Telegram, Node, Python</span></a>
+<a href="/c/web-hosting"><b>Web Hosting</b><span>Coming soon</span></a><a href="/c/development"><b>Development</b><span>Websites, bots &amp; custom builds</span></a></div></div>
+<a href="/domains">Domains</a>
+<div class="dd"><a href="#"><%= site %> ▾</a><div class="mega two"><h6><%= site.toUpperCase() %></h6>
+<a href="/about"><b>About Us</b><span>Our story &amp; mission</span></a><a href="/terms"><b>Terms</b><span>The fine print</span></a>
+<a href="/refund"><b>Refund Policy</b><span>1-day refund</span></a><a href="/privacy"><b>Privacy Policy</b><span>Your data, protected</span></a></div></div>
+<a href="/faq">FAQ</a><a class="btn sm" href="<%= discord %>" target="_blank" rel="noopener">Discord</a></nav></div></header><main class="wrap">

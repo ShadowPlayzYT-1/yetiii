@@ -1,0 +1,8 @@
+<%- include('partials/head') %>
+<p class="muted"><a href="/c/<%= cat.slug %>">← <%= cat.name %></a></p><h1><%= p.name %> <small class="muted">• <%= p.group %></small></h1>
+<div class="detail"><table><% Object.entries(p.specs).forEach(([k,v])=>{ %><tr><th><%= k %></th><td><%= v %></td></tr><% }) %></table>
+<aside class="card"><% if(!p.stock){ %><div class="oos">Out of stock</div><% } else if(p.price_month){ %>
+<div class="price"><%= inr(p.price_month) %><small>/month</small></div><p><%= inr(p.price_year) %> / year</p><% } else { %><div class="price">Custom quote</div><% } %>
+<% if(p.stock){ %><a class="btn" href="<%= discord %>" target="_blank" rel="noopener">Order via Discord ticket</a><% } %>
+<p class="muted">1-day refund • <a href="/refund">Policy</a></p></aside></div>
+<%- include('partials/foot') %>
