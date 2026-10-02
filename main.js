@@ -1,15 +1,15 @@
 require('dotenv').config();
 const express=require('express'),session=require('express-session'),fs=require('fs'),path=require('path'),crypto=require('crypto');
 const {seed}=require('./seed'),pages=require('./pages');
-const app=express(),E=process.env,DB=path.join(__dirname,'data','db.json');
+const app=express(),E=process.env,DB=process.env.VERCEL?'/tmp/db.json':path.join(__dirname,'data','db.json');
 const load=()=>{if(!fs.existsSync(DB))fs.writeFileSync(DB,JSON.stringify(seed(),null,2));return JSON.parse(fs.readFileSync(DB))};
 const save=d=>fs.writeFileSync(DB,JSON.stringify(d,null,2));
 const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const inr=n=>'₹'+Number(n).toLocaleString('en-IN');
 
-app.set('view engine','ejs');
+app.set('view engine','ejs');app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded({extended:false}));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(session({secret:E.SESSION_SECRET||'dev',resave:false,saveUninitialized:false,cookie:{httpOnly:true,sameSite:'lax',maxAge:864e5}}));
 app.use((req,res,next)=>{const d=load();res.locals={cats:d.cats.sort((a,b)=>a.order-b.order),site:E.SITE_NAME||'YetiNodes',discord:E.DISCORD_URL,inr,admin:!!req.session.admin,title:''};next()});
 
@@ -89,4 +89,5 @@ app.post('/admin/product/save/:id?',guard,(req,res)=>{
 app.post('/admin/product/delete/:id',guard,(req,res)=>{const d=load();d.products=d.products.filter(x=>x.id!=req.params.id);save(d);res.redirect('/admin')});
 
 app.use((req,res)=>res.status(404).render('page',{title:'404',body:'<p>Page not found.</p>'}));
-app.listen(E.PORT||3000,()=>console.log('YetiNodes running on http://localhost:'+(E.PORT||3000)));
+if(require.main===module)app.listen(E.PORT||3000,()=>console.log('YetiNodes running on http://localhost:'+(E.PORT||3000)));
+module.exports=app;
